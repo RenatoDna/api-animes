@@ -14,3 +14,7 @@ API simples para listar e adicionar animes.
     "nome": "Bleach",
     "genero": "Ação"
   }
+
+# github flow foi escolhido por ser um projeto mais simples com intuito de aprendizado.
+ 
+
