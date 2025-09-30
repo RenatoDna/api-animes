@@ -1,0 +1,18 @@
+name: workflow-principal
+run-name: Workflow Principal
+on:
+  push:
+jobs:
+  executa-testes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Instalar o node na versão 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
