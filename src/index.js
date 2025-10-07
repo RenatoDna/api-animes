@@ -9,6 +9,7 @@ const animes = [
   { id: 2, nome: 'One Piece', genero: 'Aventura' },
   { id: 3, nome: 'Attack on Titan', genero: 'Fantasia' },
   { id: 3, nome: 'Yugioh', genero: 'Jogo de Tabuleiro' },
+  { id: 3, nome: 'digimon', genero: 'Aventura' },
 ];
 
 function obterAnimes(req, res) {
