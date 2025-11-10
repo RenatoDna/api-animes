@@ -1,7 +1,11 @@
 name: workflow-principal
 run-name: Workflow Principal
+
 on:
   push:
+    branches:
+      - main
+
 jobs:
   executa-testes:
     runs-on: ubuntu-latest
@@ -14,5 +18,22 @@ jobs:
         with:
           node-version: 22
 
+      
+      - name: Cache de dependências
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies
-        run: npm install
+        
+        run: npm ci
+
+      
+      - name: Build do projeto (opcional)
+        run: npm run build # Adicione se seu projeto tiver um passo de build
+
+      - name: Executar testes
+        run: npm test # Necessário para o job "executa-testes"

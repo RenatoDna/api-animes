@@ -1,24 +1,33 @@
 {
   "name": "api-animes",
   "version": "1.0.0",
-  "description": "",
+  "description": "API simples de animes com Express",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --coverage",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RenatoDna/api-animes.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "express",
+    "api",
+    "animes"
+  ],
+  "author": "Renato Dna",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/RenatoDna/api-animes/issues"
   },
   "homepage": "https://github.com/RenatoDna/api-animes#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^4.19.2"
   }
 }

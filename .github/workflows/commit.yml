@@ -14,18 +14,28 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Switch branch
-        run: |
-          git fetch origin
-          git checkout feature
+      # ⛔ ERRO REMOVIDO ⛔
+      # O passo "Switch branch" foi removido.
+      # 'actions/checkout' já usa a branch correta.
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
 
+      # Otimização: Cache para node_modules
+      - name: Cache de dependências
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm # Caminho onde o npm guarda o cache
+          # Cria uma chave única baseada no lockfile
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies
-        run: npm install
+        # CORREÇÃO: Usando 'npm ci' para builds reprodutíveis
+        run: npm ci
 
       - name: Build project
         run: npm run build
