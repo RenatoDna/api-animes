@@ -1,4 +1,4 @@
-/**import Router from 'express';
+import Router from 'express';
 
 const animeRouter = Router();
 
@@ -41,11 +41,4 @@ animeRouter.get('/animes', obterAnimes);
 
 animeRouter.delete('/animes/:id', deleteAnime);
 
-export default animeRouter; */
-import app from './app.js';
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-});
+export default animeRouter;
