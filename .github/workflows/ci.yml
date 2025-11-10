@@ -16,10 +16,19 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Configurar Node.js (exemplo para JS/TS)
+      - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
+
+      # Otimização: Cache para node_modules
+      - name: Cache de dependências
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm # Caminho onde o npm guarda o cache
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Instalar dependências
         run: npm ci
@@ -37,8 +46,24 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
+      
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      
+      - name: Cache de dependências
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Instalar dependências
         run: npm ci
 
       - name: Executar testes com cobertura
+        
         run: npm run test -- --coverage --coverageThreshold='{"global":{"branches":90,"functions":90,"lines":90,"statements":90}}'

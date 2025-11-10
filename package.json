@@ -5,18 +5,22 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --coverage",
     "lint": "eslint ."
   },
   "devDependencies": {
-    "eslint": "^8.0.0",
-    "jest": "^29.0.0"
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RenatoDna/api-animes.git"
   },
-  "keywords": ["express", "api", "animes"],
+  "keywords": [
+    "express",
+    "api",
+    "animes"
+  ],
   "author": "Renato Dna",
   "license": "ISC",
   "bugs": {
@@ -24,6 +28,6 @@
   },
   "homepage": "https://github.com/RenatoDna/api-animes#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^4.19.2"
   }
 }

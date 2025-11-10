@@ -2,16 +2,17 @@ import Router from 'express';
 
 const animeRouter = Router();
 
-animeRouter.get('/api/animes', obterAnimes);
 
 const animes = [
   { id: 1, nome: 'Naruto', genero: 'Ação' },
   { id: 2, nome: 'One Piece', genero: 'Aventura' },
   { id: 3, nome: 'Attack on Titan', genero: 'Fantasia' },
   { id: 4, nome: 'Yugioh', genero: 'Jogo de Tabuleiro' },
-  { id: 5, nome: 'digimon', genero: 'Aventura' },
+  { id: 5, nome: 'Digimon', genero: 'Aventura' }, 
   { id: 6, nome: 'Pokemon', genero: 'Aventura' },
 ];
+
+
 
 function obterAnimes(req, res) {
   return res.status(200).json(animes);
@@ -22,17 +23,23 @@ function deleteAnime(req, res) {
 
   const index = animes.findIndex((anime) => anime.id === id);
 
-  if (index === -1){
+  if (index === -1) {
     return res.status(404).json({ message: 'Anime não localizado' });
   }
+
+
   const removido = animes.splice(index, 1);
+
   return res.status(200).json({
     mensagem: "Anime removido com sucesso",
-    removido: removido[0],
-  })
+    removido: removido[0], 
+  });
 }
 
-animeRouter.get('/api/animes/', obterAnimes);
-animeRouter.delete('/api/animes/:id', deleteAnime);
+
+animeRouter.get('/animes', obterAnimes); 
+
+
+animeRouter.delete('/animes/:id', deleteAnime);
 
 export default animeRouter;
