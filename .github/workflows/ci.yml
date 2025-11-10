@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  # 🔹 1. Verificação de estilo de código
+
   lint:
     name: Verificação de Estilo
     runs-on: ubuntu-latest
@@ -21,11 +21,11 @@ jobs:
         with:
           node-version: 20
 
-      # Otimização: Cache para node_modules
+
       - name: Cache de dependências
         uses: actions/cache@v4
         with:
-          path: ~/.npm # Caminho onde o npm guarda o cache
+          path: ~/.npm 
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
@@ -36,7 +36,7 @@ jobs:
       - name: Rodar lint
         run: npm run lint
 
-  # 🔹 2. Verificação de cobertura de testes
+
   test:
     name: Verificação de Cobertura de Testes
     runs-on: ubuntu-latest

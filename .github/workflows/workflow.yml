@@ -31,9 +31,6 @@ jobs:
         
         run: npm ci
 
-      
-      - name: Build do projeto (opcional)
-        run: npm run build # Adicione se seu projeto tiver um passo de build
 
       - name: Executar testes
-        run: npm test # Necessário para o job "executa-testes"
+        run: npm tes
